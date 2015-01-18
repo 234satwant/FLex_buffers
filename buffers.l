@@ -15,7 +15,8 @@ include BEGIN(incl);
 <incl>[ \t]*"<"	
 <incl>[^ \t\n>]+ { yyin = fopen(yytext,"r");
 		if(!yyin)
-		cout<<"ERROR opening file";
+		{cout<<"ERROR opening file";
+                yyterminate();}
 		else
 		cout<<"Reading file : "<<yytext<<"\n";
 		yypush_buffer_state(yy_create_buffer( yyin, YY_BUF_SIZE ));
